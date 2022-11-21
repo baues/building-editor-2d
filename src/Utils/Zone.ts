@@ -1,4 +1,4 @@
-import { CanvasDocument } from 'building-editor-2d/Canvas';
+import { CanvasDocument } from '../Canvas';
 import { AnalysisFloorGeometry, AnalysisZone, programKey, shadingKey, spaceTypeKey, wwrKey } from 'types';
 import { PolylineObject } from '../Canvas/Object';
 import { Polyline, Point } from '../Geometry';

@@ -1,5 +1,5 @@
-import { GeometryObject } from "building-editor-2d/Canvas";
-import { Point, Rectangle } from "building-editor-2d/Geometry";
+import { GeometryObject } from "../Canvas";
+import { Point, Rectangle } from "../Geometry";
 import { AnalysisFloorGeometry, AnalysisLine, AnalysisPoint, Floor } from "types";
 
 export class ComputeBoundingBox {

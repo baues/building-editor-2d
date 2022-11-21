@@ -1,8 +1,8 @@
 import p5 from 'p5';
-import { Point, Vector } from 'building-editor-2d/Geometry';
+import { Point, Vector } from '../../Geometry';
 import { GeometryObject } from "./GeometryObject";
 import { PointObject } from './PointObject';
-import { ObjectColor, SnapMode } from 'building-editor-2d/types';
+import { ObjectColor, SnapMode } from '../../types';
 
 export class VectorObject implements GeometryObject {
     /**オブジェクトが保持するジオメトリ情報 */

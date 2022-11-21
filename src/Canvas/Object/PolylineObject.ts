@@ -1,9 +1,9 @@
 import p5 from 'p5';
 import { CurveSnap } from "../Interface";
 import { GeometryObject } from "./GeometryObject";
-import { Point, Polyline, Vector } from 'building-editor-2d/Geometry';
-import { LineObject } from 'building-editor-2d/Canvas/Object';
-import { ObjectColor, SnapMode } from 'building-editor-2d/types';
+import { Point, Polyline, Vector } from '../../Geometry';
+import { LineObject } from '../../Canvas/Object';
+import { ObjectColor, SnapMode } from '../../types';
 import { PointObject } from './PointObject';
 import { AnalysisPoint } from 'types';
 

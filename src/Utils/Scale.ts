@@ -1,4 +1,4 @@
-import { Point, Rectangle } from "building-editor-2d/Geometry";
+import { Point, Rectangle } from "../Geometry";
 import { AnalysisFloorGeometry, AnalysisLine, AnalysisPoint } from "types";
 import { Floor } from "types/GeometryTypes";
 import { ComputeBoundingBox } from ".";

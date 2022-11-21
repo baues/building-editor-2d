@@ -1,4 +1,4 @@
-import { LineCoefficient } from 'building-editor-2d/types';
+import { LineCoefficient } from '../types';
 import { GeometryBase, Point, Rectangle, Vector } from '.';
 
 /**

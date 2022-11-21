@@ -1,9 +1,9 @@
 import p5 from 'p5';
-import { Vector, Rectangle, Point } from 'building-editor-2d/Geometry';
+import { Vector, Rectangle, Point } from '../../Geometry';
 import { CurveSnap } from '../Interface';
 import { GeometryObject } from "./GeometryObject";
 import { LineObject, PolylineObject } from '.';
-import { ObjectColor, SnapMode } from 'building-editor-2d/types';
+import { ObjectColor, SnapMode } from '../../types';
 
 //TODO: polyline と共通化する（CurveObject？を作る）
 export class RectangleObject implements GeometryObject, CurveSnap {

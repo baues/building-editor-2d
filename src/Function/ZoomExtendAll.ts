@@ -1,5 +1,5 @@
 import { CanvasScaler, ComputeBoundingBox } from '../Utils';
-import { CanvasDocument } from 'building-editor-2d/Canvas';
+import { CanvasDocument } from '../Canvas';
 
 export function zoomExtendAll(doc: CanvasDocument): void {
     const info = doc.canvasInfo;

@@ -1,9 +1,9 @@
 import p5 from 'p5';
 import { Point, Rectangle } from '../Geometry';
-import { ObjectColor, Snap } from 'building-editor-2d/types';
+import { ObjectColor, Snap } from '../types';
 import { PointObject, RectangleObject } from '../Canvas/Object';
-import { CanvasDocument, CanvasInfo, GeometryObject, Layer } from 'building-editor-2d/Canvas';
-import { B2DMath } from 'building-editor-2d/Utils';
+import { CanvasDocument, CanvasInfo, GeometryObject, Layer } from '../Canvas';
+import { B2DMath } from '../Utils';
 
 
 /**

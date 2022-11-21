@@ -1,4 +1,4 @@
-import { Snap } from 'building-editor-2d/types';
+import { Snap } from '../types';
 import { GeometryObject } from '.';
 
 export class EditorState {
