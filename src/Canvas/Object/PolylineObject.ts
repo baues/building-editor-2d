@@ -5,7 +5,6 @@ import { Point, Polyline, Vector } from '../../Geometry';
 import { LineObject } from '../../Canvas/Object';
 import { ObjectColor, SnapMode } from '../../types';
 import { PointObject } from './PointObject';
-import { AnalysisPoint } from 'types';
 
 /**
  * 2D のポリラインオブジェクトを表すクラス
@@ -36,10 +35,6 @@ export class PolylineObject implements GeometryObject, CurveSnap {
 
     toPointObjects(): PointObject[] {
         return this.geometry.ptList.map(pt => new PointObject(pt));
-    }
-
-    toAnalysisPointArray(): AnalysisPoint[] {
-        return this.geometry.toPointArray().map(pt => [pt.x, pt.y]);
     }
 
     draw(p5: p5, color: ObjectColor, scale: number, isFill = false): void {

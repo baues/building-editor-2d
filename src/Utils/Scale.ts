@@ -1,7 +1,4 @@
 import { Point, Rectangle } from "../Geometry";
-import { AnalysisFloorGeometry, AnalysisLine, AnalysisPoint } from "types";
-import { Floor } from "types/GeometryTypes";
-import { ComputeBoundingBox } from ".";
 
 export class CanvasScaler {
     canvasHeight: number;
@@ -14,7 +11,7 @@ export class CanvasScaler {
         this.scale = scale;
     }
 
-    private setScale(boundingBox: Rectangle): number {
+    setScale(boundingBox: Rectangle): number {
         const bBoxWidth = boundingBox.width();
         const bBoxHeight = boundingBox.hight();
 
@@ -42,26 +39,6 @@ export class CanvasScaler {
     }
 
     scaleFromBoundingBox(boundingBox: Rectangle): number {
-        return this.setScale(boundingBox);
-    }
-
-    scaleFromFloors(floors: Floor[]): number {
-        const boundingBox: Rectangle = ComputeBoundingBox.allFloors(floors);
-        return this.setScale(boundingBox);
-    }
-
-    scaleFromZoneGeometries(geometries: AnalysisFloorGeometry[], includeOrigin = false): number {
-        const boundingBox: Rectangle = ComputeBoundingBox.analysisFloorGeometries(geometries, includeOrigin);
-        return this.setScale(boundingBox);
-    }
-
-    scaleFromCoordinates(coordinates: AnalysisPoint[]): number {
-        const boundingBox: Rectangle = ComputeBoundingBox.zoneCoordinates(coordinates);
-        return this.setScale(boundingBox);
-    }
-
-    scaleFromLines(lines: AnalysisLine[]): number {
-        const boundingBox = ComputeBoundingBox.analysisLines(lines);
         return this.setScale(boundingBox);
     }
 }
