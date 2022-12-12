@@ -1,9 +1,9 @@
 import p5 from 'p5';
 import { Line, Point, Vector } from '../Geometry';
-import { ObjectColorSet, Snap, SnapMode } from 'building-editor-2d/types';
+import { ObjectColorSet, Snap, SnapMode } from '../types';
 import { B2DMath } from '../Utils';
 import { LineObject, PointObject } from '../Canvas/Object';
-import { CanvasDocument, CanvasInfo, GeometryObject } from 'building-editor-2d/Canvas';
+import { CanvasDocument, CanvasInfo, GeometryObject } from '../Canvas';
 
 function PointSnap(doc: CanvasDocument, p: p5, info: CanvasInfo, minPtDist: number, snap: Snap, color: ObjectColorSet) {
     const visibleLayers: string[] = doc.layers

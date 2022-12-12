@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { CanvasDocument } from 'building-editor-2d/Canvas';
+import { CanvasDocument } from './Canvas';
 import { snap, zoomExtendAll, addRectangle, panCanvas, selectGeometry } from './Function';
 import { Vector } from './Geometry';
 

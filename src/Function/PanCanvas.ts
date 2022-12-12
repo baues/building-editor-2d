@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Vector } from '../Geometry';
-import { CanvasDocument } from 'building-editor-2d/Canvas';
+import { CanvasDocument } from '../Canvas';
 
 export function panCanvas(doc: CanvasDocument, p: p5, vec: Vector | null): void {
     const info = doc.canvasInfo;

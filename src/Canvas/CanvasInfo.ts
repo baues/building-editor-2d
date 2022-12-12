@@ -1,5 +1,5 @@
-import { Point, Vector } from 'building-editor-2d/Geometry';
-import { ObjectColorSet } from 'building-editor-2d/types';
+import { Point, Vector } from '../Geometry';
+import { ObjectColorSet } from '../types';
 
 export class CanvasInfo {
     scale: number;

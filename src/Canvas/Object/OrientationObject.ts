@@ -1,7 +1,7 @@
 import p5 from 'p5';
-import { DrawableObject } from 'building-editor-2d/Canvas';
-import { ObjectColor } from 'building-editor-2d/types';
-import { Point } from 'building-editor-2d/Geometry';
+import { DrawableObject } from '../../Canvas';
+import { ObjectColor } from '../../types';
+import { Point } from '../../Geometry';
 
 export class OrientationObject implements DrawableObject {
     isVisible = true;

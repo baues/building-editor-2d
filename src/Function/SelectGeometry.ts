@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { PointObject, PolylineObject } from '../Canvas/Object';
-import { CanvasDocument } from 'building-editor-2d/Canvas';
+import { CanvasDocument } from '../Canvas';
 
 /**オブジェクトの選択 */
 function selectGeometryObjects(doc: CanvasDocument, p: p5) {

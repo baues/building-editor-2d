@@ -1,4 +1,4 @@
-import { Point } from 'building-editor-2d/Geometry/Point';
+import { Point } from '../Geometry/Point';
 import { GetSnapAngleVector } from './Snap';
 
 describe("Snap", () => {

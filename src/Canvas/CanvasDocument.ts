@@ -1,8 +1,8 @@
 import p5 from 'p5';
 import { CanvasObject } from './Object';
-import { Layer, GeometryObject, CanvasInfo } from 'building-editor-2d/Canvas';
+import { Layer, GeometryObject, CanvasInfo } from '.';
 import { EditorState } from './EditorState';
-import { ObjectColor } from 'building-editor-2d/types';
+import { ObjectColor } from '../types';
 
 /**
  * キャンバスの情報を保持するクラス。

@@ -1,5 +1,5 @@
-import { Point, Vector } from 'building-editor-2d/Geometry';
-import { ObjectColor } from 'building-editor-2d/types';
+import { Point, Vector } from '../Geometry';
+import { ObjectColor } from '../types';
 import p5 from 'p5';
 
 /**

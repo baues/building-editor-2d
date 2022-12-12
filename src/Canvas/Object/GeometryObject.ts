@@ -1,5 +1,5 @@
-import { Vector, GeometryBase, Point } from 'building-editor-2d/Geometry';
-import { ObjectColor, SnapMode } from 'building-editor-2d/types';
+import { Vector, GeometryBase, Point } from '../../Geometry';
+import { ObjectColor, SnapMode } from '../../types';
 import p5 from 'p5';
 import { DrawableObject } from '../Interface';
 

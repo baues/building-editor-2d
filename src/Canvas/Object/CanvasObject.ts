@@ -1,6 +1,6 @@
 import p5 from 'p5';
-import { AxisObject, GridObject, OrientationObject, ScaleObject } from 'building-editor-2d/Canvas/Object';
-import { ObjectColorSet } from 'building-editor-2d/types';
+import { AxisObject, GridObject, OrientationObject, ScaleObject } from '../../Canvas/Object';
+import { ObjectColorSet } from '../../types';
 
 export class CanvasObject  {
     isVisible = true;
