@@ -4,12 +4,11 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { useEditPlansContext } from './EditPlansContext';
 import { P5Canvas, useP5Context } from '../src';
-import { ComputeBoundingBox, CanvasScaler, Zone } from '../src/Utils';
+import { ComputeBoundingBox, CanvasScaler } from '../src/Utils';
 import { CanvasInfo, CanvasDocument, GeometryObject, Layer } from '../src/Canvas';
-import { AxisObject, CanvasObject, GridObject, OrientationObject, ScaleObject } from '../src/Canvas/Object';
+import { AxisObject, CanvasObject, GridObject, OrientationObject, PolylineObject, ScaleObject } from '../src/Canvas/Object';
 import { editorFunction } from '../src/EditorFunction';
-import { Vector } from '../src/Geometry';
-import { AnalysisItemToGeometry } from '../src/Connector';
+import { Point, Rectangle, Vector } from '../src/Geometry';
 
 let doc: CanvasDocument = new CanvasDocument(new CanvasInfo(0, 0, 0), new CanvasObject(), [], []);
 
@@ -108,20 +107,19 @@ export default function EditPlansCanvas(): React.ReactElement {
   // キャンバスのイニシャライズ
   useEffect(() => {
     const info = new CanvasInfo(1, canvasHeight, canvasWidth);
-    const bbox = AnalysisItemToGeometry.boundingBoxFromAnalysisFloorGeometries(geometry!.geometries, true);
+    const bbox = new Rectangle(new Point(-10, -10), new Point(10, 10));
     const scaler = new CanvasScaler(info.height, info.width);
     info.drawCenter = bbox.center();
     info.colorMode = theme.palette.mode;
     info.scale = scaler.scaleFromBoundingBox(bbox);
 
-    const geometries: GeometryObject[] = Zone.convertZonesToPolylines(geometry!.geometries);
-
+    const geometries: GeometryObject[] = [new PolylineObject(bbox.toPolyline())]
     const angle = (northAxisError || northAxis === '') ? 0 : northAxis;
     const orientation = new OrientationObject(angle, info.drawCenter);
     const scaleObject = new ScaleObject(info.drawCenter);
     const canvasObject = new CanvasObject(new GridObject(20, 5, 5), new AxisObject(), scaleObject, orientation);
 
-    const layers: Layer[] = AnalysisItemToGeometry.floorGeometriesToLayer(geometry!.geometries, ["Layer0"]);
+    const layers: Layer[] = [new Layer("default", true, 1)]
     setLayers(layers);
     info.activeLayer = String(floor);
     setFloor(floor);

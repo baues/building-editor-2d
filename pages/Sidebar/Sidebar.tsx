@@ -12,10 +12,15 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import { useWindowSize, useMobile } from 'src/utils/useWindowSize';
+import { useMobile } from './useWindowSize';
 import { SidebarProvider, useSidebarContext } from './SidebarContext';
+import dynamic from 'next/dynamic';
 
-export const baseSidebarWidth = 240;
+export const baseSidebarWidth = 240
+
+const useWindowSize = dynamic(() => import('./useWindowSize'), {
+  ssr: false,
+});
 
 const Transition = React.forwardRef(function Transition(props: TransitionProps & { children: React.ReactElement }, ref: React.Ref<unknown>) {
   return <Slide direction="up" ref={ref} {...props} />;

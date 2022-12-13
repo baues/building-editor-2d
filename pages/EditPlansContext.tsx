@@ -47,7 +47,7 @@ interface EditPlansProviderProps {
 
 export function EditPlansProvider({ children }: EditPlansProviderProps): React.ReactElement {
   const [floor, setFloor] = useState<string>(initialState.floor);
-  const [northAxis, setNorthAxisAction] = useState<number | ''>(initialNorthAxis);
+  const [northAxis, setNorthAxis] = useState<number | ''>(0);
   const [editFunction, setEditFunction] = useState<string>(initialState.editFunction);
   const [snapMode, setSnapMode] = useState<SnapMode>(initialState.snapMode);
   const [layers, setLayers] = useState<Layer[]>(initialState.layers);

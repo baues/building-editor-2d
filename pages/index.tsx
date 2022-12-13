@@ -1,7 +1,11 @@
 import { EditPlansProvider } from './EditPlansContext';
 import NavSidebar from './NavSidebar';
 import InputSidebar from './InputSidebar';
-import EditPlansCanvas from './EditPlansCanvas';
+import dynamic from 'next/dynamic';
+
+const EditPlansCanvas = dynamic(() => import('./EditPlansCanvas'), {
+  ssr: false,
+});
 
 export default function EditPlans(): React.ReactElement {
   return (
