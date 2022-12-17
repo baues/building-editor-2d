@@ -1,18 +1,21 @@
 import React from 'react';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
-import Sidebar from './Sidebar';
 import { useEditPlansContext } from './EditPlansContext';
 import { Autocomplete, IconButton, Tooltip } from '@mui/material';
 import { BorderColor, FitScreen, TransitEnterexit } from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import { editorFunction } from '../src/EditorFunction';
+import dynamic from 'next/dynamic';
+
+const Sidebar = dynamic(() => import('./Sidebar'), {
+  ssr: false,
+});
 
 type SnapModeControlProp = {
   name: string;

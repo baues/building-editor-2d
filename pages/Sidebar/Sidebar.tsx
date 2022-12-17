@@ -14,13 +14,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { useMobile } from './useWindowSize';
 import { SidebarProvider, useSidebarContext } from './SidebarContext';
-import dynamic from 'next/dynamic';
 
 export const baseSidebarWidth = 240
-
-const useWindowSize = dynamic(() => import('./useWindowSize'), {
-  ssr: false,
-});
 
 const Transition = React.forwardRef(function Transition(props: TransitionProps & { children: React.ReactElement }, ref: React.Ref<unknown>) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -38,7 +33,6 @@ interface Props {
 function SidebarContent({ children, title, width, anchor = 'right', swipeable = true, drawerProps }: Props): React.ReactElement {
   const theme = useTheme();
   const mobile = useMobile();
-  const windowSize = useWindowSize();
   const { open, handleOpen, handleClose } = useSidebarContext();
   const sidebarWidth = width || baseSidebarWidth;
 
@@ -71,8 +65,8 @@ function SidebarContent({ children, title, width, anchor = 'right', swipeable = 
       variant="permanent"
       PaperProps={{
         style: {
-          maxHeight: mobile ? windowSize.height - 75 : windowSize.height,
-          height: swipeable ? windowSize.height : 'auto',
+          maxHeight: window.innerHeight,
+          height: swipeable ? window.innerHeight : 'auto',
           width: sidebarWidth,
           backgroundColor: 'transparent',
           border: 'none',

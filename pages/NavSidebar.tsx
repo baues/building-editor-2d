@@ -1,13 +1,15 @@
 import React from 'react';
 import Tabs from '@mui/material/Tabs';
-import Sidebar from './Sidebar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { LayerContainer } from './LayerContainer';
+import dynamic from 'next/dynamic';
 
+const Sidebar = dynamic(() => import('./Sidebar'), {
+  ssr: false,
+});
 
 export function DnDContent(): React.ReactElement {
-
   return (
     <Tabs
       orientation="vertical"
