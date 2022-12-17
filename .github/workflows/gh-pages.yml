@@ -20,14 +20,15 @@ jobs:
        uses: actions/setup-node@v3
        with:
          node-version: 16
+         cache: yarn
 
      # パッケージをインストールする
      - name: Install dependencies
-       run: npm --frozen-lockfile
+       run: yarn --frozen-lockfile
 
      # ビルドする
      - name: Build
-       run: npn run cibuild
+       run: yarn cibuild
 
      # GitHub Pages にデプロイする
      - name: Deploy
