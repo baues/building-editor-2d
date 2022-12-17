@@ -4,7 +4,7 @@ name: github pages
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   build-deploy:
