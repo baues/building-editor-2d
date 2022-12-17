@@ -14,9 +14,9 @@ interface P5State {
 const initialState = {
   p5: null,
   setP5: () => { },
-  canvasWidth: 0,
+  canvasWidth: 2000,
   setCanvasWidth: () => { },
-  canvasHeight: 0,
+  canvasHeight: 1000,
   setCanvasHeight: () => { },
   ref: null,
 };

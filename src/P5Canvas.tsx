@@ -8,11 +8,8 @@ interface Props {
 
 export default function P5Canvas({ sketch }: Props): React.ReactElement {
   const { p5, setP5, setCanvasWidth, setCanvasHeight, ref } = useP5Context();
-
   useEffect(() => {
-    if (ref?.current) {
-      setP5(new _p5(sketch, ref.current));
-    }
+      setP5(new _p5(sketch));
 
     return () => {
       if (p5) {
@@ -23,10 +20,8 @@ export default function P5Canvas({ sketch }: Props): React.ReactElement {
 
   useEffect(() => {
     function onResize() {
-      if (ref?.current?.parentElement?.offsetWidth && ref.current?.parentElement?.offsetHeight) {
-        setCanvasWidth(ref.current?.parentElement?.offsetWidth);
-        setCanvasHeight(ref.current?.parentElement?.offsetHeight);
-      }
+      setCanvasWidth(window.innerWidth);
+      setCanvasHeight(window.innerHeight);
     }
     onResize();
 
