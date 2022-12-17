@@ -63,14 +63,14 @@ function SnapModeCheckBoxes(): JSX.Element {
   const { endPoint, near, middle, grid, angle } = snapMode;
 
   return <FormControl component="fieldset">
-    <FormLabel component="legend">snap-mode</FormLabel>
+    <FormLabel component="legend">SnapMode</FormLabel>
     <FormGroup>
       <Box>
-        <SnapModeControl name="endPoint" label="snap-mode-end-point" checked={endPoint} />
-        <SnapModeControl name="middle" label="snap-mode-middle" checked={middle} />
-        <SnapModeControl name="near" label="snap-mode-near" checked={near} />
-        <SnapModeControl name="grid" label="snap-mode-grid" checked={grid} />
-        <SnapModeControl name="angle" label="snap-mode-angle" checked={angle} />
+        <SnapModeControl name="endPoint" label="EndPoint" checked={endPoint} />
+        <SnapModeControl name="middle" label="Middle" checked={middle} />
+        <SnapModeControl name="near" label="Near" checked={near} />
+        <SnapModeControl name="grid" label="Grid" checked={grid} />
+        <SnapModeControl name="angle" label="Angle" checked={angle} />
       </Box>
     </FormGroup>
   </FormControl>;
