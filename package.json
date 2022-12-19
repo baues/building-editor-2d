@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "cibuild": "next build && next export"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
