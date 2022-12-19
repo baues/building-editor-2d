@@ -107,7 +107,7 @@ export default function EditPlansCanvas(): React.ReactElement {
   // キャンバスのイニシャライズ
   useEffect(() => {
     const info = new CanvasInfo(1, canvasHeight, canvasWidth);
-    const bbox = new Rectangle(new Point(-10, -10), new Point(10, 10));
+    const bbox = new Rectangle(new Point(-1.5, -1.5), new Point(1.5, 1.5));
     const scaler = new CanvasScaler(info.height, info.width);
     info.drawCenter = bbox.center();
     info.colorMode = theme.palette.mode;
