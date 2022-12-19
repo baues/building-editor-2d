@@ -26,10 +26,6 @@ type SnapModeControlProp = {
 function NorthAxisInput(): JSX.Element {
   const { northAxis, northAxisError, setNorthAxis } = useEditPlansContext();
 
-  if (northAxis === '') {
-    setNorthAxis(0);
-  }
-
   return <TextField
     id="northAxis"
     label='north-axis'
@@ -40,7 +36,7 @@ function NorthAxisInput(): JSX.Element {
     error={!!northAxisError}
     helperText={northAxisError}
     value={northAxis}
-    onChange={(e) => setNorthAxis(e.target.value ? Number(e.target.value) : '')} />;
+    onChange={(e) => setNorthAxis(Number(e.target.value))} />;
 }
 
 function SnapModeControl(prop: SnapModeControlProp): JSX.Element {
