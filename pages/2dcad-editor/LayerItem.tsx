@@ -3,15 +3,15 @@ import { useDrag, useDrop } from "react-dnd";
 import { Identifier, XYCoord } from "dnd-core";
 import { Checkbox, Grid, TextField } from "@mui/material";
 import { Color, ColorValue, ColorPicker } from "mui-color";
-import { Layer } from "../src/Canvas";
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import EditIcon from '@mui/icons-material/Edit';
 import EditOffIcon from '@mui/icons-material/EditOff';
 import { useEditPlansContext } from "./EditPlansContext";
-import { B2DMath } from "../src/Utils";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Layer } from "../../src/Canvas";
+import { B2DMath } from "../../src/Utils";
 
 export interface LayerProps {
     index: number;
