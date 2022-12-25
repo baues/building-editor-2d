@@ -1,9 +1,16 @@
-import { EditPlansProvider } from './EditPlansContext';
-import NavSidebar from './NavSidebar';
-import InputSidebar from './InputSidebar';
 import dynamic from 'next/dynamic';
 
 const EditPlansCanvas = dynamic(() => import('./EditPlansCanvas'), {
+  ssr: false,
+});
+const EditPlansProvider = dynamic(() => import('./EditPlansContext').then(mod => mod.EditPlansProvider), {
+  ssr: false,
+});
+const NavSidebar = dynamic(() => import('./NavSidebar'), {
+  ssr: false,
+});
+
+const InputSidebar = dynamic(() => import('./InputSidebar'), {
   ssr: false,
 });
 
