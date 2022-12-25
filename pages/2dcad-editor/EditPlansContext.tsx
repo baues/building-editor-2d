@@ -1,7 +1,7 @@
-import { CanvasDocument, CanvasInfo, Layer } from '../src/Canvas';
-import { CanvasObject } from '../src/Canvas/Object';
-import { SnapMode } from '../src/types';
 import React, { useState, useContext, useMemo } from 'react';
+import { CanvasDocument, CanvasInfo, Layer } from '../../src/Canvas';
+import { CanvasObject } from '../../src/Canvas/Object';
+import { SnapMode } from '../../src/types';
 
 interface EditPlansState {
   floor: string;

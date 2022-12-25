@@ -3,12 +3,12 @@ import p5 from 'p5';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { useEditPlansContext } from './EditPlansContext';
-import { P5Canvas, useP5Context } from '../src';
-import { ComputeBoundingBox, CanvasScaler } from '../src/Utils';
-import { CanvasInfo, CanvasDocument, GeometryObject, Layer } from '../src/Canvas';
-import { AxisObject, CanvasObject, GridObject, OrientationObject, PolylineObject, ScaleObject } from '../src/Canvas/Object';
-import { editorFunction } from '../src/EditorFunction';
-import { Point, Rectangle, Vector } from '../src/Geometry';
+import { P5Canvas, useP5Context } from '../../src';
+import { ComputeBoundingBox, CanvasScaler } from '../../src/Utils';
+import { CanvasInfo, CanvasDocument, GeometryObject, Layer } from '../../src/Canvas';
+import { AxisObject, CanvasObject, GridObject, OrientationObject, PolylineObject, ScaleObject } from '../../src/Canvas/Object';
+import { editorFunction } from '../../src/EditorFunction';
+import { Point, Rectangle, Vector } from '../../src/Geometry';
 
 let doc: CanvasDocument = new CanvasDocument(new CanvasInfo(0, 0, 0), new CanvasObject(), [], []);
 

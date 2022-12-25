@@ -1,29 +1,17 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
 
-const EditPlansCanvas = dynamic(() => import('./EditPlansCanvas'), {
-  ssr: false,
-});
-const EditPlansProvider = dynamic(() => import('./EditPlansContext').then(mod => mod.EditPlansProvider), {
-  ssr: false,
-});
-const NavSidebar = dynamic(() => import('./NavSidebar'), {
-  ssr: false,
-});
 
-const InputSidebar = dynamic(() => import('./InputSidebar'), {
-  ssr: false,
-});
+export default function Home() {
+  if (typeof window !== 'undefined') {
+    const Editor = dynamic(() => import('./2dcad-editor'), { ssr: false });
 
-export default function EditPlans(): React.ReactElement {
-  return (
-    <div
-      onContextMenu={(e) => { e.preventDefault(); }}
-    >
-      <EditPlansProvider >
-        <EditPlansCanvas />
-        <NavSidebar />
-        <InputSidebar />
-      </EditPlansProvider>
-    </div>
-  );
+    return (
+      <Editor />
+    );
+  } else {
+    return null;
+  }
 }

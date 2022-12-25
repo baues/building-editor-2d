@@ -10,8 +10,8 @@ import { useEditPlansContext } from './EditPlansContext';
 import { Autocomplete, IconButton, Tooltip } from '@mui/material';
 import { BorderColor, FitScreen, TransitEnterexit } from '@mui/icons-material';
 import Box from '@mui/material/Box';
-import { editorFunction } from '../src/EditorFunction';
 import dynamic from 'next/dynamic';
+import { editorFunction } from '../../src/EditorFunction';
 
 const Sidebar = dynamic(() => import('./Sidebar'), {
   ssr: false,
