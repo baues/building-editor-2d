@@ -62,7 +62,7 @@ const sketch = (p: p5) => {
     const info = doc.canvasInfo;
 
     p.resizeCanvas(info.width, info.height);
-    p.clear(0,0,0,0);
+    p.clear();
     p.translate(info.canvasTranslate().x, info.canvasTranslate().y);
     p.scale(info.scale);
 
@@ -113,13 +113,13 @@ export default function EditPlansCanvas(): React.ReactElement {
     info.colorMode = theme.palette.mode;
     info.scale = scaler.scaleFromBoundingBox(bbox);
 
-    const geometries: GeometryObject[] = [new PolylineObject(bbox.toPolyline())]
+    const geometries: GeometryObject[] = [new PolylineObject(bbox.toPolyline())];
     const angle = (northAxisError) ? 0 : northAxis;
     const orientation = new OrientationObject(angle, info.drawCenter);
     const scaleObject = new ScaleObject(info.drawCenter);
     const canvasObject = new CanvasObject(new GridObject(20, 5, 5), new AxisObject(), scaleObject, orientation);
 
-    const layers: Layer[] = [new Layer("default", true, 1)]
+    const layers: Layer[] = [new Layer("default", true, 1)];
     setLayers(layers);
     info.activeLayer = String(floor);
     setFloor(floor);
