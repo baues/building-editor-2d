@@ -8,7 +8,7 @@ interface EditPlansState {
   setFloor: (floor: string) => void;
   northAxis: number | '';
   northAxisError: string;
-  setNorthAxis: (northAxis: number | string | '') => void;
+  setNorthAxis: (northAxis: number | '') => void;
   editFunction: string;
   setEditFunction: (editFunction: string) => void;
   snapMode: SnapMode;
