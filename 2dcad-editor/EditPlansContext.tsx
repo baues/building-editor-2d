@@ -1,14 +1,14 @@
+import React, { useState, useContext, useMemo } from 'react';
 import { CanvasDocument, CanvasInfo, Layer } from '../src/Canvas';
 import { CanvasObject } from '../src/Canvas/Object';
 import { SnapMode } from '../src/types';
-import React, { useState, useContext, useMemo, useCallback } from 'react';
 
 interface EditPlansState {
   floor: string;
   setFloor: (floor: string) => void;
-  northAxis: number | '';
+  northAxis: number;
   northAxisError: string;
-  setNorthAxis: (northAxis: number | '') => void;
+  setNorthAxis: (northAxis: number) => void;
   editFunction: string;
   setEditFunction: (editFunction: string) => void;
   snapMode: SnapMode;
@@ -47,13 +47,13 @@ interface EditPlansProviderProps {
 
 export function EditPlansProvider({ children }: EditPlansProviderProps): React.ReactElement {
   const [floor, setFloor] = useState<string>(initialState.floor);
-  const [northAxis, setNorthAxis] = useState<number | ''>(0);
+  const [northAxis, setNorthAxis] = useState<number>(initialState.northAxis);
   const [editFunction, setEditFunction] = useState<string>(initialState.editFunction);
   const [snapMode, setSnapMode] = useState<SnapMode>(initialState.snapMode);
   const [layers, setLayers] = useState<Layer[]>(initialState.layers);
   const [document, setDocument] = useState<CanvasDocument>(initialState.document);
   const [active, setActive] = useState<boolean>(initialState.active);
-  const northAxisError = northAxis === '' || northAxis < -180 || northAxis > 180 ? 'NorthAxis must be from -180° to 180°' : '';
+  const northAxisError = northAxis < -180 || northAxis > 180 ? 'NorthAxis must be from -180° to 180°' : '';
 
   const state: EditPlansState = useMemo(() => {
     return {

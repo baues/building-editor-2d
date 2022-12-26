@@ -108,19 +108,19 @@ export default function EditPlansCanvas(): React.ReactElement {
   // キャンバスのイニシャライズ
   useEffect(() => {
     const info = new CanvasInfo(1, canvasHeight, canvasWidth);
-    const bbox = new Rectangle(new Point(-10, -10), new Point(10, 10));
+    const bbox = new Rectangle(new Point(-1.5, -1.5), new Point(1.5, 1.5));
     const scaler = new CanvasScaler(info.height, info.width);
     info.drawCenter = bbox.center();
     info.colorMode = theme.palette.mode;
     info.scale = scaler.scaleFromBoundingBox(bbox);
 
-    const geometries: GeometryObject[] = [new PolylineObject(bbox.toPolyline())]
-    const angle = (northAxisError || northAxis === '') ? 0 : northAxis;
+    const geometries: GeometryObject[] = [new PolylineObject(bbox.toPolyline())];
+    const angle = (northAxisError) ? 0 : northAxis;
     const orientation = new OrientationObject(angle, info.drawCenter);
     const scaleObject = new ScaleObject(info.drawCenter);
     const canvasObject = new CanvasObject(new GridObject(20, 5, 5), new AxisObject(), scaleObject, orientation);
 
-    const layers: Layer[] = [new Layer("default", true, 1)]
+    const layers: Layer[] = [new Layer("default", true, 1)];
     setLayers(layers);
     info.activeLayer = String(floor);
     setFloor(floor);
@@ -172,7 +172,7 @@ export default function EditPlansCanvas(): React.ReactElement {
 
   // オリエンテーションの更新
   useEffect(() => {
-    doc.canvasObject.orientation.northAngle = (northAxisError || northAxis === '') ? 0 : northAxis;
+    doc.canvasObject.orientation.northAngle = (northAxisError) ? 0 : northAxis;
   }, [northAxis, northAxisError]);
 
   return (

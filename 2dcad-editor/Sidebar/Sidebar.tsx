@@ -15,7 +15,7 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { useMobile } from './useWindowSize';
 import { SidebarProvider, useSidebarContext } from './SidebarContext';
 
-export const baseSidebarWidth = 240
+export const baseSidebarWidth = 240;
 
 const Transition = React.forwardRef(function Transition(props: TransitionProps & { children: React.ReactElement }, ref: React.Ref<unknown>) {
   return <Slide direction="up" ref={ref} {...props} />;
