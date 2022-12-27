@@ -28,7 +28,7 @@ jobs:
 
      # ビルドする
      - name: Build
-       run: yarn build
+       run: yarn cibuild
 
      # GitHub Pages にデプロイする
      - name: Deploy

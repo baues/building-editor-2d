@@ -4,6 +4,6 @@ const nextConfig = {
   swcMinify: true,
   basePath: process.env.GITHUB_ACTIONS && "/repository_name",
   trailingSlash: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
