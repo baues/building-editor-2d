@@ -5,7 +5,7 @@ import { useEditPlansContext } from './EditPlansContext';
 import { Button } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import { Layer } from "../../src/Canvas";
+import { Layer } from "../src/Canvas";
 
 // FIXME: これまでの最大のレイヤーインデックスを保存している。もっと良い書き方がありそう
 let layerIndex = 0;

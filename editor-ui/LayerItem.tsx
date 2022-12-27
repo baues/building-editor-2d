@@ -10,8 +10,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import EditOffIcon from '@mui/icons-material/EditOff';
 import { useEditPlansContext } from "./EditPlansContext";
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Layer } from "../../src/Canvas";
-import { B2DMath } from "../../src/Utils";
+import { Layer } from "../src/Canvas";
+import { B2DMath } from "../src/Utils";
 
 export interface LayerProps {
     index: number;

@@ -3,12 +3,12 @@ import p5 from 'p5';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import { useEditPlansContext } from './EditPlansContext';
-import { P5Canvas, useP5Context } from '../../src';
-import { ComputeBoundingBox, CanvasScaler } from '../../src/Utils';
-import { CanvasInfo, CanvasDocument, GeometryObject, Layer } from '../../src/Canvas';
-import { AxisObject, CanvasObject, GridObject, OrientationObject, PolylineObject, ScaleObject } from '../../src/Canvas/Object';
-import { editorFunction } from '../../src/EditorFunction';
-import { Point, Rectangle, Vector } from '../../src/Geometry';
+import { P5Canvas, useP5Context } from '../src';
+import { ComputeBoundingBox, CanvasScaler } from '../src/Utils';
+import { CanvasInfo, CanvasDocument, GeometryObject, Layer } from '../src/Canvas';
+import { AxisObject, CanvasObject, GridObject, OrientationObject, PolylineObject, ScaleObject } from '../src/Canvas/Object';
+import { editorFunction } from '../src/EditorFunction';
+import { Point, Rectangle, Vector } from '../src/Geometry';
 
 let doc: CanvasDocument = new CanvasDocument(new CanvasInfo(0, 0, 0), new CanvasObject(), [], []);
 
@@ -62,6 +62,7 @@ const sketch = (p: p5) => {
     const info = doc.canvasInfo;
 
     p.resizeCanvas(info.width, info.height);
+    // @ts-ignore
     p.clear();
     p.translate(info.canvasTranslate().x, info.canvasTranslate().y);
     p.scale(info.scale);
@@ -79,9 +80,9 @@ const sketch = (p: p5) => {
 
   // キャンバスの拡大縮小
   p.mouseWheel = (event: WheelEvent) => {
-    doc.canvasInfo.scale = doc.canvasInfo.scale - event.deltaY * 0.5 < 1
-      ? 1
-      : doc.canvasInfo.scale - event.deltaY * 0.5;
+    doc.canvasInfo.scale = Math.sign(event.deltaY) > 0
+        ? doc.canvasInfo.scale * 0.9
+        : doc.canvasInfo.scale * 1.1;
     p.scale(doc.canvasInfo.scale);
   };
 
@@ -119,10 +120,10 @@ export default function EditPlansCanvas(): React.ReactElement {
     const scaleObject = new ScaleObject(info.drawCenter);
     const canvasObject = new CanvasObject(new GridObject(20, 5, 5), new AxisObject(), scaleObject, orientation);
 
-    const layers: Layer[] = [new Layer("default", true, 1)];
+    const layers: Layer[] = [new Layer("default", true, 1, 3, false)];
     setLayers(layers);
-    info.activeLayer = String(floor);
-    setFloor(floor);
+    info.activeLayer = "default";
+    setFloor("default");
 
     doc = new CanvasDocument(info, canvasObject, geometries, layers);
     setDocument(doc);
