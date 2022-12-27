@@ -80,9 +80,9 @@ const sketch = (p: p5) => {
 
   // キャンバスの拡大縮小
   p.mouseWheel = (event: WheelEvent) => {
-    doc.canvasInfo.scale = doc.canvasInfo.scale - event.deltaY * 0.5 < 1
-      ? 1
-      : doc.canvasInfo.scale - event.deltaY * 0.5;
+    doc.canvasInfo.scale = Math.sign(event.deltaY) > 0
+        ? doc.canvasInfo.scale * 0.9
+        : doc.canvasInfo.scale * 1.1;
     p.scale(doc.canvasInfo.scale);
   };
 
@@ -120,10 +120,10 @@ export default function EditPlansCanvas(): React.ReactElement {
     const scaleObject = new ScaleObject(info.drawCenter);
     const canvasObject = new CanvasObject(new GridObject(20, 5, 5), new AxisObject(), scaleObject, orientation);
 
-    const layers: Layer[] = [new Layer("default", true, 1)];
+    const layers: Layer[] = [new Layer("default", true, 1, 3, false)];
     setLayers(layers);
-    info.activeLayer = String(floor);
-    setFloor(floor);
+    info.activeLayer = "default";
+    setFloor("default");
 
     doc = new CanvasDocument(info, canvasObject, geometries, layers);
     setDocument(doc);
