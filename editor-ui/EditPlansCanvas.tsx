@@ -62,7 +62,6 @@ const sketch = (p: p5) => {
     const info = doc.canvasInfo;
 
     p.resizeCanvas(info.width, info.height);
-    // @ts-ignore
     p.clear();
     p.translate(info.canvasTranslate().x, info.canvasTranslate().y);
     p.scale(info.scale);

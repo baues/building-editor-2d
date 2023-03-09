@@ -8,9 +8,9 @@ import { B2DMath } from '../Utils';
 
 /**
  * Rectangle を描画するとき、マウスの点にサイズを表示する関数
- * @param info 
- * @param p 
- * @param startPt 
+ * @param info
+ * @param p
+ * @param startPt
  * @param endPt
  */
 function drawRectSizeText(info: CanvasInfo, p: p5, startPt: Point, endPt: Point): void {

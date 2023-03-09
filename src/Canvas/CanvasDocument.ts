@@ -16,6 +16,7 @@ export class CanvasDocument {
     canvasObject: CanvasObject;
     /**ジオメトリのオブジェクト */
     geometryObjects: GeometryObject[] = [];
+    /** */
     editorState: EditorState = EditorState.defaultSettings();
 
     constructor(canvasInfo: CanvasInfo, canvasObject: CanvasObject, geometryObjects: GeometryObject[], layers: Layer[]) {

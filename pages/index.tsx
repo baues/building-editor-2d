@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 const Editor = dynamic(() => import('../editor-ui'), { ssr: false });
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <div>
       <Head>
