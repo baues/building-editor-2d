@@ -3,6 +3,7 @@ import { Point, Vector } from '../../Geometry';
 import { GeometryObject } from "./GeometryObject";
 import { PointObject } from './PointObject';
 import { ObjectColor, SnapMode } from '../../types';
+import { CreateUUID } from '../../Utils/UUID';
 
 export class VectorObject implements GeometryObject {
     /**オブジェクトが保持するジオメトリ情報 */
@@ -17,6 +18,8 @@ export class VectorObject implements GeometryObject {
     isVisible = true;
     /**オブジェクトが選択されているかのブール値 */
     isSelected = false;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(geometry: Vector, name = "", layerName = "default") {
         this.geometry = geometry;

@@ -2,11 +2,14 @@ import p5 from 'p5';
 import { DrawableObject } from '../../Canvas';
 import { ObjectColor } from '../../types';
 import { Point } from '../../Geometry';
+import { CreateUUID } from '../../Utils/UUID';
 
 export class OrientationObject implements DrawableObject {
     isVisible = true;
     northAngle: number;
     drawCenter: Point;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(northAngle = 0, drawCenter = new Point(0, 0)) {
         this.northAngle = northAngle;

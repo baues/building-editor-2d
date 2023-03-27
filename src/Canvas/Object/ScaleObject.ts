@@ -2,10 +2,13 @@ import p5 from 'p5';
 import { DrawableObject } from '../../Canvas';
 import { ObjectColor } from '../../types';
 import { Point } from '../../Geometry';
+import { CreateUUID } from '../../Utils/UUID';
 
 export class ScaleObject implements DrawableObject {
     isVisible = true
     drawCenter: Point;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(drawCenter = new Point(0, 0)) {
         this.drawCenter = drawCenter;

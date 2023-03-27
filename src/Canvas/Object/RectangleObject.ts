@@ -4,6 +4,7 @@ import { CurveSnap } from '../Interface';
 import { GeometryObject } from "./GeometryObject";
 import { LineObject, PolylineObject } from '.';
 import { ObjectColor, SnapMode } from '../../types';
+import { CreateUUID } from '../../Utils/UUID';
 
 //TODO: polyline と共通化する（CurveObject？を作る）
 export class RectangleObject implements GeometryObject, CurveSnap {
@@ -19,6 +20,8 @@ export class RectangleObject implements GeometryObject, CurveSnap {
     isVisible = true;
     /**オブジェクトが選択されているかのブール値 */
     isSelected = false;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(geometry: Rectangle, name = "", layerName = "default") {
         this.geometry = geometry;

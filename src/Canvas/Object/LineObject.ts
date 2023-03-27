@@ -4,6 +4,7 @@ import { CurveSnap } from "../Interface";
 import { GeometryObject } from "./GeometryObject";
 import { ObjectColor, SnapMode } from '../../types';
 import { PointObject } from './PointObject';
+import { CreateUUID } from '../../Utils/UUID';
 
 export class LineObject implements GeometryObject, CurveSnap {
     /**オブジェクトが保持するジオメトリ情報 */
@@ -18,6 +19,8 @@ export class LineObject implements GeometryObject, CurveSnap {
     isVisible = true;
     /**オブジェクトが選択されているかのブール値 */
     isSelected = false;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(geometry: Line, name = "", layerName = "default") {
         this.geometry = geometry;
@@ -34,9 +37,9 @@ export class LineObject implements GeometryObject, CurveSnap {
 
     /**
      * マウスのポイントと Line との距離を求める。
-     * @param p5 
-     * @param pan 
-     * @param scale 
+     * @param p5
+     * @param pan
+     * @param scale
      * @returns
      */
     mouseDist(p5: p5, pan: Vector, scale: number): number {
@@ -70,7 +73,7 @@ export class LineObject implements GeometryObject, CurveSnap {
         const line = this.geometry;
         const mousePt = PointObject.mousePt(p5, pan, scale).geometry;
 
-        if (line.distance(mousePt) < distance / scale){
+        if (line.distance(mousePt) < distance / scale) {
             return line.closestPoint(mousePt);
         } else {
             return null;

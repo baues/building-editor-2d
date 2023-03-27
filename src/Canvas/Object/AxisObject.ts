@@ -2,11 +2,14 @@ import p5 from 'p5';
 import { Point } from '../../Geometry';
 import { DrawableObject } from "../../Canvas";
 import { ObjectColor } from '../../types';
+import { CreateUUID } from '../../Utils/UUID';
 
 export class AxisObject implements DrawableObject {
     isVisible = true;
     origin: Point;
     length: number;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(origin = Point.zero(), length = 100000) {
         this.origin = origin;
@@ -15,9 +18,9 @@ export class AxisObject implements DrawableObject {
 
     /**
      * 軸の描画
-     * @param p5 
+     * @param p5
      * @param color fill が X軸、stroke が Y軸 のカラーになる
-     * @param scale 
+     * @param scale
      */
     draw(p5: p5, color: ObjectColor, scale: number): void {
         const origin = new Point(this.origin.x, this.origin.y);

@@ -2,6 +2,7 @@ import p5 from 'p5';
 import { Point } from '../../Geometry';
 import { DrawableObject } from "../../Canvas";
 import { ObjectColor } from '../../types';
+import { CreateUUID } from '../../Utils/UUID';
 
 export class GridObject implements DrawableObject {
     isVisible = true;
@@ -9,6 +10,8 @@ export class GridObject implements DrawableObject {
     primarySpacing: number;
     subdivisions: number;
     origin: Point;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(size = 1000, primarySpacing = 10, subdivisions = 5, origin = Point.zero()) {
         this.size = size;
@@ -18,10 +21,9 @@ export class GridObject implements DrawableObject {
     }
 
     /**
-     * 
-     * @param p5 
+     * @param p5
      * @param color fill が内部分割の線の色、stroke がメインのグリッドの色
-     * @param scale 
+     * @param scale
      */
     draw(p5: p5, color: ObjectColor, scale: number): void {
         const length = this.size / 2;

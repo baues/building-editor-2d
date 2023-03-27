@@ -1,12 +1,16 @@
+import { CreateUUID } from "../Utils/UUID";
+import { UUID } from "./Interface";
+
 const colorList = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "brown", "black"];
 
-export class Layer {
+export class Layer implements UUID {
     name: string
     color: string;
     index: number;
     height: number;
     isVisible = true;
     isLocked = false;
+    UUID = CreateUUID();
 
     constructor(name: string, isVisible: boolean, index: number, height = 3000, isLocked = false, color = '#000000') {
         this.name = name;

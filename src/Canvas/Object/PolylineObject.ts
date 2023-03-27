@@ -5,6 +5,7 @@ import { Point, Polyline, Vector } from '../../Geometry';
 import { LineObject } from '../../Canvas/Object';
 import { ObjectColor, SnapMode } from '../../types';
 import { PointObject } from './PointObject';
+import { CreateUUID } from '../../Utils/UUID';
 
 /**
  * 2D のポリラインオブジェクトを表すクラス
@@ -22,6 +23,8 @@ export class PolylineObject implements GeometryObject, CurveSnap {
     isVisible = true;
     /**オブジェクトが選択されているかのブール値 */
     isSelected = false;
+    /**オブジェクトの UUID */
+    UUID: string = CreateUUID();
 
     constructor(geometry: Polyline, name = "", layerName = "default") {
         this.geometry = geometry;
@@ -78,7 +81,7 @@ export class PolylineObject implements GeometryObject, CurveSnap {
             }
         });
 
-        if (dist === Number.MAX_VALUE){
+        if (dist === Number.MAX_VALUE) {
             return Number.NaN;
         } else {
             return dist;

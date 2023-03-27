@@ -3,6 +3,7 @@ import { CanvasObject } from './Object';
 import { Layer, GeometryObject, CanvasInfo } from '.';
 import { EditorState } from './EditorState';
 import { ObjectColor } from '../types';
+import { ActionState } from './Interface';
 
 /**
  * キャンバスの情報を保持するクラス。
@@ -18,15 +19,20 @@ export class CanvasDocument {
     geometryObjects: GeometryObject[] = [];
     /** */
     editorState: EditorState = EditorState.defaultSettings();
+    /**Undo 用のアクションの保存 */
+    undoStates: ActionState[] = [];
+    /**Redo 用のアクションの保存 */
+    redoStates: ActionState[] = [];
 
     constructor(canvasInfo: CanvasInfo, canvasObject: CanvasObject, geometryObjects: GeometryObject[], layers: Layer[]) {
         this.canvasInfo = canvasInfo;
         this.canvasObject = canvasObject;
-        this.geometryObjects = geometryObjects;
+        this.addGeometryObjects(geometryObjects);
+
         if (layers.length === 0) {
-            this.layers.push(new Layer("default", true, 0));
+            this.addLayer(new Layer("default", true, 0));
         } else {
-            this.layers = layers;
+            this.addLayers(layers);
         }
     }
 
@@ -47,9 +53,6 @@ export class CanvasDocument {
         }
 
         // 描画対象のレイヤーを描画
-        // this.geometryObjects
-        //     .filter(obj => visibleLayers.includes(obj.layerName))
-        //     .forEach(obj => obj.draw(p5, color.default, this.canvasInfo.scale, false));
         for (let index = 0; index < this.geometryObjects.length; index++) {
             const obj = this.geometryObjects[index];
             if (visibleLayers.includes(obj.layerName)) {
@@ -74,5 +77,61 @@ export class CanvasDocument {
 
     clearTempGeometry(): void {
         this.editorState.editingGeometry = [];
+    }
+
+    addGeometryObject(obj: GeometryObject): void {
+        this.geometryObjects.push(obj);
+        this.undoStates.push({
+            UUID: obj.UUID,
+            action: "create",
+            type: "GeometryObject",
+            item: obj,
+        });
+        this.redoStates = this.redoStates.filter(o => o.UUID !== obj.UUID);
+    }
+
+    addGeometryObjects(objs: GeometryObject[]): void {
+        for (let i = 0; i < objs.length; i++) {
+            this.addGeometryObject(objs[i]);
+        }
+    }
+
+    removeGeometryObject(obj: GeometryObject): void {
+        this.geometryObjects = this.geometryObjects.filter(o => o.UUID !== obj.UUID);
+        this.redoStates.push({
+            UUID: obj.UUID,
+            action: "remove",
+            type: "GeometryObject",
+            item: obj,
+        });
+        this.undoStates = this.undoStates.filter(o => o.UUID !== obj.UUID);
+    }
+
+    addLayer(layer: Layer): void {
+        this.layers.push(layer);
+        this.undoStates.push({
+            UUID: layer.UUID,
+            action: "create",
+            type: "Layer",
+            item: layer,
+        });
+        this.redoStates = this.redoStates.filter(o => o.UUID !== layer.UUID);
+    }
+
+    addLayers(layers: Layer[]): void {
+        for (let i = 0; i < layers.length; i++) {
+            this.addLayer(layers[i]);
+        }
+    }
+
+    removeLayer(layer: Layer): void {
+        this.layers = this.layers.filter(l => l.UUID !== layer.UUID);
+        this.redoStates.push({
+            UUID: layer.UUID,
+            action: "remove",
+            type: "Layer",
+            item: layer,
+        });
+        this.undoStates = this.undoStates.filter(o => o.UUID !== layer.UUID);
     }
 }
