@@ -51,15 +51,15 @@ function panCanvasByArrowKey(p: p5, doc: CanvasDocument) {
 /**
  * p5js の setup と draw の定義
  */
-const sketch = (p: p5) => {
+const sketch = (p: p5): void => {
   p.setup = () => {
     p.createCanvas(window.innerWidth, window.innerHeight);
     p.rectMode(p.CENTER);
     p.textAlign(p.CENTER, p.CENTER);
   };
 
-  p.draw = () => {
-    const info = doc.canvasInfo;
+  p.draw = (): void => {
+    const info: CanvasInfo = doc.canvasInfo;
 
     p.resizeCanvas(info.width, info.height);
     p.clear();
@@ -73,19 +73,18 @@ const sketch = (p: p5) => {
       const funcKey = doc.editorState.function;
       editorFunction[funcKey].func(p, doc, []);
     }
-
     doc.draw(p);
   };
 
   // キャンバスの拡大縮小
-  p.mouseWheel = (event: WheelEvent) => {
+  p.mouseWheel = (event: WheelEvent): void => {
     doc.canvasInfo.scale = Math.sign(event.deltaY) > 0
-        ? doc.canvasInfo.scale * 0.9
-        : doc.canvasInfo.scale * 1.1;
+      ? doc.canvasInfo.scale * 0.9
+      : doc.canvasInfo.scale * 1.1;
     p.scale(doc.canvasInfo.scale);
   };
 
-  p.keyPressed = () => {
+  p.keyPressed = (): void => {
     if (p.keyIsDown(p.SHIFT)) { // 手を表示してパンモードであることを示す
       p.cursor(p.HAND);
     } else if (p.keyIsDown(p.DOWN_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW)) {
@@ -93,7 +92,7 @@ const sketch = (p: p5) => {
     }
   };
 
-  p.keyReleased = () => {
+  p.keyReleased = (): boolean => {
     p.cursor(p.ARROW);
     return false;
   };

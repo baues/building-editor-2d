@@ -14,8 +14,8 @@ import { B2DMath } from '../Utils';
  * @param endPt
  */
 function drawRectSizeText(info: CanvasInfo, p: p5, startPt: Point, endPt: Point): void {
-    let dispNumDecimals;
-    let dispFactor;
+    let dispNumDecimals: number;
+    let dispFactor: number;
 
     if (info.unit.length === "m") {
         dispFactor = 1000;
@@ -27,11 +27,11 @@ function drawRectSizeText(info: CanvasInfo, p: p5, startPt: Point, endPt: Point)
         throw new Error("unknown unit");
     }
 
-    const size = 15 / info.scale;
+    const size: number = 15 / info.scale;
     p.fill(0);
     p.noStroke();
     p.textFont('Helvetica');
-    const letter =
+    const letter: string =
         B2DMath.round(Math.abs(startPt.x - endPt.x) * dispFactor, dispNumDecimals) + "mm X " +
         B2DMath.round(Math.abs(startPt.y - endPt.y) * dispFactor, dispNumDecimals) + "mm";
     p.textSize(size);
@@ -68,12 +68,13 @@ export function addRectangle(doc: CanvasDocument, p: p5): void {
     } else if (editingGeometry.length > 0) {
         const startPt = editingGeometry[0].geometry as Point;
         if (pt.distance(startPt) >= info.toleranceValue()) {
-            doc.geometryObjects.push(
+            doc.addGeometryObject(
                 new RectangleObject(
                     new Rectangle(editingGeometry[0].geometry as Point, pt),
                     "",
                     info.activeLayer,
-                ).toPolylineObject());
+                ).toPolylineObject(),
+            );
         }
         doc.clearTempGeometry();
     }
